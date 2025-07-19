@@ -1,0 +1,142 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+ 
+} */
+
+
+
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+ /*
+|-------------------------------------------------------------------------------
+| CRITICAL ROOT STYLES FOR CONSISTENT FULL-HEIGHT APPLICATION BEHAVIOR
+|
+| This is the FOUNDATION for correct scrolling. It ensures your app takes full
+| viewport height and prevents the main browser window from scrolling,
+| forcing your sidebar (and other internal elements) to manage their own overflow.
+|
+| *** MAKE SURE THESE LINES ARE EXACTLY AS SHOWN ***
+|-------------------------------------------------------------------------------
+*/
+ html,
+ body,
+ #root {
+   height: 100vh;
+   /* Ensures full viewport height consistently */
+   margin: 0;
+   /* Removes default browser margins */
+   padding: 0;
+   /* Removes default browser padding */
+   overflow: hidden;
+   /* Prevents the main <html> or <body> from showing scrollbars */
+   overscroll-behavior: none;
+   /* Prevents scroll chaining/bounce effect */
+ }
+
+
+ /*
+|-------------------------------------------------------------------------------
+| CUSTOM SCROLLBAR STYLES (for elements with 'custom-scrollbar' class)
+|
+| These styles define the appearance of your custom scrollbars.
+| They are allowed to work ONLY if no global rules (like '::-webkit-scrollbar { display: none; }')
+| are hiding ALL scrollbars across your page.
+|-------------------------------------------------------------------------------
+*/
+
+ /* For WebKit browsers (Chrome, Safari, Edge) */
+ .custom-scrollbar::-webkit-scrollbar {
+   width: 8px;
+   /* Width of the vertical scrollbar */
+   height: 8px;
+   /* Height for horizontal scrollbars */
+   background: transparent;
+   /* Ensures the scrollbar area background is transparent */
+ }
+
+ .custom-scrollbar::-webkit-scrollbar-track {
+   background: #1f2937;
+   /* Color of the scrollbar track */
+   border-radius: 10px;
+ }
+
+ .custom-scrollbar::-webkit-scrollbar-thumb {
+   background: #60a5fa;
+   /* Blue-400 for the thumb color */
+   border-radius: 10px;
+   border: 2px solid #0f172a;
+   /* Border around the thumb */
+ }
+
+ .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+   background: #3b82f6;
+   /* Slightly darker blue on hover */
+ }
+
+ /* For Firefox specific scrollbar styles */
+ .custom-scrollbar {
+   scrollbar-width: thin;
+   /* "auto" or "thin" for width */
+   scrollbar-color: #60a5fa #1f2937;
+   /* thumb color and track color */
+ }
+
+
+ /*
+|-------------------------------------------------------------------------------
+| SELECTIVE SCROLLBAR HIDING (USE ONLY WHEN SPECIFICALLY NEEDED)
+|
+| This class should ONLY be applied to individual elements in your JSX where you
+| INTENTIONALLY want to hide a scrollbar (e.g., a specific carousel).
+| It should NOT be used as a global rule.
+|-------------------------------------------------------------------------------
+*/
+ .scrollbar-hide {
+   -ms-overflow-style: none;
+   /* IE and Edge */
+   scrollbar-width: none;
+   /* Firefox */
+ }
+
+ .scrollbar-hide::-webkit-scrollbar {
+   display: none;
+   /* Chrome, Safari, Opera */
+ }
+
+ /* In your global CSS file (e.g., src/index.css) */
+ .thin-horizontal-scrollbar::-webkit-scrollbar {
+   height: 6px;
+   /* Sets the height (thickness) of the scrollbar */
+ }
+
+ .thin-horizontal-scrollbar::-webkit-scrollbar-track {
+   background: transparent;
+   /* Makes the track invisible */
+ }
+
+ .thin-horizontal-scrollbar::-webkit-scrollbar-thumb {
+   background-color: #4a5568;
+   /* A dark gray that fits your theme */
+   border-radius: 10px;
+   border: 2px solid transparent;
+   /* Prevents thumb from touching the edges */
+   background-clip: content-box;
+ }
+
+ .thin-horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+   background-color: #718096;
+   /* A lighter gray for hover effect */
+ }
