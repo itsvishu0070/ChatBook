@@ -11,10 +11,10 @@ import { app, server } from "./socket/socket.js";
 const port=process.env.PORT;
 
 
-const frontendurl = process.env.FRONTEND_URI;
+//const frontendurl = process.env.FRONTEND_URI;
 app.use(cors({
     // origin:"https://chat-on-adgw.onrender.com",
-    origin:frontendurl,
+    origin:"https://chatbook-frontend.onrender.com",
     credentials:true
 })) 
 app.use(express.json()); 
