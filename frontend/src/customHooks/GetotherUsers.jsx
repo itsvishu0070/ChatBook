@@ -17,7 +17,7 @@ const useGetOtherUsers=()=>{
             }
         }
             if (userData) {
-    fetchUser(); // ✅ only fetch when user is logged in
+    fetchUser(); 
   }
         },[userData])
 }
